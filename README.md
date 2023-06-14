@@ -2,7 +2,7 @@
 
 Very basic HTML boilerplate.  
 No prefixes, proprietary elements and tags, or other extra fluff.  
-Ordered using the "Outside In" method, with an extra rule: properties are alphabetically sorted.
+CSS Ordered using the "Outside In" method, with an extra rule: properties are alphabetically sorted.
 
 ```
 Layout Properties (position, float, clear, display)
