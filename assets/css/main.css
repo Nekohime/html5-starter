@@ -1,25 +1,61 @@
-/* Layout Properties (position, float, clear, display) */
-/* Box Model Properties (width, height, margin, padding) */
-/* Visual Properties (color, background, border, box-shadow) */
-/* Typography Properties (font-size, font-family, text-align, text-transform) */
-/* Misc Properties (cursor, overflow, z-index) */
+/*
+License: CC0 (See LICENSE file)
 
-*, *:before, *:after {
+Layout Properties (position, float, clear, display)
+Box Model Properties (width, height, margin, padding)
+Visual Properties (color, background, border, box-shadow)
+Typography Properties (font-size, font-family, text-align, text-transform)
+Misc Properties (cursor, overflow, z-index)
+*/
+
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
+
 :root {
-  --my-variable: #000;
+  --link-default: #00e;
+  --link-hover: #00e;
+  --text-default: #fff;
 }
+
 html, body {
   height: 100%;
   width: 100%;
 }
+
 body {
   background: #000;
-  color: #FFF;
-  font-family: Hack, Roboto, "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Arial, Helvetica, Sans-Serif, Webdings;
+  color: var(--text-default);
+  font-display: swap;
+  font-family: Hack, Roboto, "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Arial, Helvetica, sans-serif, Webdings;
   font-size: 1.5em;
   overflow: hidden;
+}
+
+a:link, a:visited {
+  color: var(--link-default);
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+header, main, footer {
+  /* width: ??%; */
+}
+
+/* stylelint-disable media-feature-range-notation */
+
+/* Media Queries (should be the last section in the file) */
+
+@media all and (max-width: 1200px) {
+    header, main, footer {
+      /* width: ??%; */
+    }
 }
