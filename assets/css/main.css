@@ -1,61 +1,269 @@
 /*
-License: CC0 (See LICENSE file)
-
-Layout Properties (position, float, clear, display)
-Box Model Properties (width, height, margin, padding)
-Visual Properties (color, background, border, box-shadow)
-Typography Properties (font-size, font-family, text-align, text-transform)
-Misc Properties (cursor, overflow, z-index)
+* License: CC0 (See LICENSE file)
+*
+* Class Casing: kebab-case
+*
+* Layout Properties (position, float, clear, display)
+* Box Model Properties (width, height, margin, padding)
+* Visual Properties (color, background, border, box-shadow)
+* Typography Properties (font-size, font-family, text-align, text-transform)
+* Misc Properties (cursor, overflow, z-index)
 */
 
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  hyphens: auto;
-  overflow-wrap: break-word;
 }
 
 :root {
+  --main-colour: #999;
+  --heading-colour: #b2b2b2;
+  --bg: #111;
+  --bg-black: #000;
+  --bg-code: #2e2e2e;
+  --bg-drk: #191919;
+  --bg-gryish: #383838;
+  --red: #f00;
+  --grn: #280;
+  --blu: #4ad;
+  --gry: #b2b2b2;
+  --text-colour: #d3d3d3;
+  --gry-drkr: #999;
+  --orng: #d19a66;
+  --prpl: #C7D;
+  --yellow: #ebd040;
+  --wht: #fff;
+  --border-trim: #80808033;
+  --width: 75%;
   --link-default: #00e;
   --link-hover: #00e;
-  --text-default: #fff;
-}
-
-html, body {
-  height: 100%;
-  width: 100%;
 }
 
 body {
-  background: #000;
-  color: var(--text-default);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  background: var(--bg-black);
+  color: var(--text-colour);
+  font-family: Hack, Roboto, 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Arial, monospace, Webdings;
   font-display: swap;
-  font-family: Hack, Roboto, "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Arial, Helvetica, sans-serif, Webdings;
   font-size: 1.5em;
-  overflow: hidden;
+  height: 100%;
+  overflow-x: hidden;
 }
 
-a:link, a:visited {
-  color: var(--link-default);
-  text-decoration: none;
+header, footer, main {
+  background: var(--bg-drk);
+  border: 1px solid var(--border-trim);
+  width: var(--width);
+  padding: 10px;
+  margin: auto;
+
+  & h1 {
+    padding-top: 0;
+  }
+
 }
 
-a:hover, a:active {
-  color: var(--link-hover);
-  text-decoration: underline;
+header {
+  margin-bottom: 10px;
 }
 
-header, main, footer {
-  /* width: ??%; */
+footer {
+  margin-top: 10px;
 }
 
-/* stylelint-disable media-feature-range-notation */
+main {
+  width: var(--width);
+  padding: 10px;
+  margin: auto;
+
+  /* padding-top: 0; */
+  background: var(--bg-drk);
+}
+
+hr {
+  border: 1px dashed;
+  margin: 12px 0;
+}
+
+nav {
+  text-align: center;
+
+  & ul {
+    list-style: none;
+
+    & li::before {
+      content: '・';
+    }
+
+    & li:first-of-type::before {
+      content: '';
+    }
+
+    & li {
+      display: inline-block;
+    }
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+h1, h2, h3, h4, h5, h6 {
+  padding: 10px 0;
+  margin: 0;
+  color: var(--heading-colour);
+
+  &::before {
+    color: #ec4;
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+h1::before {
+  content: '# ';
+}
+
+h2::before {
+  content: '## ';
+}
+
+h3::before {
+  content: '### ';
+}
+
+h4::before {
+  content: '#### ';
+}
+
+h5::before {
+  content: '##### ';
+}
+
+h6::before {
+  content: '###### ';
+}
+
+em {
+  color: var(--blu);
+}
+
+strong {
+  color: var(--orng);
+}
+
+em strong {
+  color: var(--prpl);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+td, th {
+  padding: 0;
+}
+
+th {
+  font-weight: 600;
+}
+
+table td, table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+table tr {
+  background-color: var(--bg);
+  border-top: 1px solid #c6cbd1;
+}
+
+table tr:nth-child(2n) {
+  background-color: var(--bg-code);
+}
+
+pre {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+pre code {
+  /* display: block; */
+  width: 95%;
+  padding: 4px 8px;
+  max-height: 512px;
+  background: var(--bg-code);
+  overflow-y: auto;
+  white-space: pre-wrap;
+  margin: 0 auto;
+
+  /* overflow-wrap: break-word; */
+}
+
+blockquote {
+  display: block;
+  width: 85%;
+  max-height: 512px;
+
+  /* margin: 0; TRBL */
+  margin-left: 0 0 0 16px;
+  padding-left: 8px;
+  background: var(--bg-code);
+  border-left: 10px solid var(--bg-gryish); /* Wha? */
+  overflow-y: auto;
+}
+
+img, picture, video, canvas, svg  {
+  /* display: block; Why would this be needed? */
+  display: block;
+  max-width: 100%;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  padding: 5px;
+  border: 1px solid var(--main-colour);
+  border-radius: 5px;
+  background-color: var(--bg-gryish);
+  font-size: 16px;
+  color: var(--white);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--white);
+}
+
+/* link, visited, hover, active */
+a {
+    text-decoration: none;
+    color: #ec4;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--blu);
+  }
+
+  &:active {
+    color: var(--grn);
+  }
+
+  &[href$='.pdf']::after {
+    content: '🖺';
+  }
+}
 
 /* Media Queries (should be the last section in the file) */
 
-@media all and (max-width: 1200px) {
+@media all and (width <= 1200px) {
     header, main, footer {
-      /* width: ??%; */
+      width: 95%;
     }
 }
