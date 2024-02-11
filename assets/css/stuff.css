@@ -18,31 +18,15 @@
 
 .quote {
   position: absolute;
-  top: 16px;
   right: 0;
+  top: 16px;
+  inline-size: 384px;
   color: var(--yellow);
   font-weight: bold;
   transform: rotate(5deg); /* Minecraft does -8 degrees */
-  animation: scale-quote 0.58s infinite;
-  width: 384px;
+  animation: scale-quote .58s infinite;
   text-align: center;
-}
-
-.center {
-  display: block;
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-.external-link::after {
-	content: ' 🔗';
-}
-
-.center-div {
-  margin: 0 auto;
+  pointer-events: none;
 }
 
 /* Media Queries (should be the last section in the file) */

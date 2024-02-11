@@ -17,60 +17,56 @@
 
 :root {
   --main-colour: #999;
-  --heading-colour: #b2b2b2;
+  --text-colour: #D3D3D3;
+  --border-trim: #80808033;
+  --border-trim-purple: #A020F033;
+  --heading-colour: #B2B2B2;
   --bg: #111;
-  --bg-black: #000;
-  --bg-code: #2e2e2e;
+  --bg-code: #2E2E2E;
   --bg-drk: #191919;
   --bg-gryish: #383838;
-  --red: #f00;
   --grn: #280;
-  --blu: #4ad;
-  --gry: #b2b2b2;
-  --text-colour: #d3d3d3;
-  --gry-drkr: #999;
-  --orng: #d19a66;
+  --blu: #4AD;
+  --gry: #B2B2B2;
+  --orng: #D19A66;
   --prpl: #C7D;
-  --yellow: #ebd040;
-  --wht: #fff;
-  --border-trim: #80808033;
+  --yellow: #EBD040;
+  --vivid-blue: #36F;
   --width: 75%;
-  --link-default: #00e;
-  --link-hover: #00e;
 }
 
 body {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin: auto;
-  background: var(--bg-black);
+  padding: 10px 0;
+  background: #000;
   color: var(--text-colour);
-  font-family: Hack, Roboto, 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Arial, monospace, Webdings;
+  font: 1.5em Hack, Roboto, 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Arial, monospace, Webdings;
   font-display: swap;
-  font-size: 1.5em;
-  height: 100%;
   overflow-x: hidden;
 }
 
-header, footer, main {
-  background: var(--bg-drk);
+header, main, footer {
   border: 1px solid var(--border-trim);
+  background: var(--bg-drk);
   width: var(--width);
   padding: 10px;
   margin: auto;
-
-  & h1 {
-    padding-top: 0;
-  }
-
 }
 
 header {
   margin-bottom: 10px;
-}
 
-footer {
-  margin-top: 10px;
+  & nav {
+    text-align: center;
+
+    & ul {
+      padding: 0;
+      list-style: none;
+
+      & li::before { content: '・'; }
+      & li:first-of-type::before { content: ''; }
+      & li { display: inline-block; }
+    }
+  }
 }
 
 main {
@@ -82,147 +78,106 @@ main {
   background: var(--bg-drk);
 }
 
-hr {
-  border: 1px dashed;
-  margin: 12px 0;
+footer {
+  margin-top: 10px;
 }
 
-nav {
-  text-align: center;
+img, picture, video, canvas, svg  {
+  display: block;
+  max-inline-size: 100%;
+}
 
-  & ul {
-    list-style: none;
+figure {
+  margin: 0 auto;
+  inline-size: 100%;
+  margin-bottom: 16px;
 
-    & li::before {
-      content: '・';
-    }
+  & img { margin: 0 auto; }
 
-    & li:first-of-type::before {
-      content: '';
-    }
-
-    & li {
-      display: inline-block;
-    }
+  & figcaption {
+    text-align: center;
+    color: var(--blu);
+    font-style: italic;
   }
 }
 
-/* stylelint-disable no-descending-specificity */
 h1, h2, h3, h4, h5, h6 {
-  padding: 10px 0;
   margin: 0;
+  padding: 10px 0;
   color: var(--heading-colour);
 
-  &::before {
-    color: #ec4;
-  }
-}
-/* stylelint-enable no-descending-specificity */
-
-h1::before {
-  content: '# ';
+  &::before { color: #ec4; }
 }
 
-h2::before {
-  content: '## ';
+h1::before { content: '# '; }
+h2::before { content: '## '; }
+h3::before { content: '### '; }
+h4::before { content: '#### '; }
+h5::before { content: '##### '; }
+h6::before { content: '###### '; }
+em { color: var(--blu); }
+strong { color: var(--orng); }
+em strong { color: var(--prpl); }
+
+hr {
+  margin: 12px 0;
+  border: 1px dashed;
 }
 
-h3::before {
-  content: '### ';
-}
-
-h4::before {
-  content: '#### ';
-}
-
-h5::before {
-  content: '##### ';
-}
-
-h6::before {
-  content: '###### ';
-}
-
-em {
-  color: var(--blu);
-}
-
-strong {
-  color: var(--orng);
-}
-
-em strong {
-  color: var(--prpl);
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  display: block;
-  overflow: auto;
-  width: 100%;
-}
-
-td, th {
-  padding: 0;
-}
-
-th {
-  font-weight: 600;
-}
-
-table td, table th {
-  border: 1px solid #dfe2e5;
-  padding: 6px 13px;
-}
-
-table tr {
-  background-color: var(--bg);
-  border-top: 1px solid #c6cbd1;
-}
-
-table tr:nth-child(2n) {
-  background-color: var(--bg-code);
+blockquote {
+  /* WIP */
 }
 
 pre {
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   margin: 0 auto;
 }
 
 pre code {
-  /* display: block; */
-  width: 95%;
+  margin: 12px auto;
+  max-height: 512px;
   padding: 4px 8px;
-  max-height: 512px;
+  inline-size: 95%;
   background: var(--bg-code);
-  overflow-y: auto;
   white-space: pre-wrap;
-  margin: 0 auto;
-
-  /* overflow-wrap: break-word; */
-}
-
-blockquote {
-  display: block;
-  width: 85%;
-  max-height: 512px;
-
-  /* margin: 0; TRBL */
-  margin-left: 0 0 0 16px;
-  padding-left: 8px;
-  background: var(--bg-code);
-  border-left: 10px solid var(--bg-gryish); /* Wha? */
   overflow-y: auto;
 }
 
-img, picture, video, canvas, svg  {
-  /* display: block; Why would this be needed? */
-  display: block;
-  max-width: 100%;
+/* link, visited, hover, active */
+a {
+  color: #ec4;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--blu);
+  }
+
+  &:active { color: var(--grn); }
 }
 
+table {
+  margin: auto;
+  inline-size: 50%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow-block: auto;
+
+  & td, & th {
+    border: 1px solid #dfe2e5;
+    padding: 6px 13px;
+  }
+
+  & tr {
+    background-color: var(--bg);
+    border-top: 1px solid #c6cbd1;
+  }
+
+  & tr:nth-child(2n) { background-color: var(--bg-code); }
+}
+
+/*
 input[type="text"],
 input[type="password"],
 textarea {
@@ -241,24 +196,7 @@ textarea:focus {
   border-color: var(--white);
 }
 
-/* link, visited, hover, active */
-a {
-    text-decoration: none;
-    color: #ec4;
-
-  &:hover {
-    text-decoration: underline;
-    color: var(--blu);
-  }
-
-  &:active {
-    color: var(--grn);
-  }
-
-  &[href$='.pdf']::after {
-    content: '🖺';
-  }
-}
+*/
 
 /* Media Queries (should be the last section in the file) */
 
